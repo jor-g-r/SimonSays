@@ -24,6 +24,7 @@ body {
     width: 50%;
     height: 50%;
     display: inline-block;
+    border: 0;
   }
 
   .left {

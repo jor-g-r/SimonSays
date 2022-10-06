@@ -7,14 +7,18 @@
   </head>
   <body>
     <div class="gameboard">
-      <div id="celeste" class="color celeste left" data-color="celeste"></div>
-      <div id="violeta" class="color violeta right" data-color="violeta"></div>
-      <div id="naranja" class="color naranja left" data-color="naranja"></div>
-      <div id="verde" class="color verde right" data-color="verde"></div>
-      <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
+      <button id="celeste" onclick="audioCeleste.play()" class="color celeste left" data-color="celeste"></button>
+      <button id="violeta" onclick="audioVioleta.play()" class="color violeta right" data-color="violeta"></button>
+      <button id="naranja" onclick="audioNaranja.play()" class="color naranja left" data-color="naranja"></button>
+      <button id="verde" onclick="audioVerde.play()" class="color verde right" data-color="verde"></button>
+      <button id="btnEmpezar" class="btn-start" onmousedown="clickAudio.play()" onclick="empezarJuego()">Start!</button>
     </div>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script>
+      
+    </script>
     <script>
       const celeste = document.getElementById('celeste')
       const violeta = document.getElementById('violeta')
@@ -22,6 +26,21 @@
       const verde = document.getElementById('verde')
       const btnEmpezar = document.getElementById('btnEmpezar')
       const ULTIMO_NIVEL = 10
+
+      const audioCeleste = new Audio();
+      audioCeleste.src = 'scale-a6.mp3';
+
+      const audioVioleta= new Audio();
+      audioVioleta.src = 'scale-d6.mp3';
+
+      const audioNaranja = new Audio();
+      audioNaranja.src = 'scale-e6.mp3';
+
+      const audioVerde = new Audio();
+      audioVerde.src = 'scale-f6.mp3'; 
+
+      const clickAudio = new Audio();
+      clickAudio.src = 'click.mp3'
 
       class Juego {
         constructor() {
@@ -42,7 +61,9 @@
             naranja,
             verde
                   }
-        }
+        };
+
+        
 
         toggleBtnEmpezar() {
           if (btnEmpezar.classList.contains('hide')) 
@@ -74,9 +95,22 @@
             case 2 : 
               return 'naranja'
             case 3 : 
-              return 'verde'
+              return 'verde' 
           }
-        }   
+        } 
+        
+        transformarColorASonido(color){
+          switch (color) {
+            case 'celeste': 
+              return audioCeleste
+            case 'violeta':
+              return audioVioleta
+            case 'naranja':
+              return audioNaranja
+            case 'verde': 
+              return audioVerde
+          }
+        }
 
         transformarColorANumero(color){
           switch (color) {
@@ -89,23 +123,49 @@
             case 'verde' : 
               return 3
           }
-        }       
+        }    
+         
 
         iluminarSecuencia() {
           for (let i = 0; i < this.nivel; i++) 
           {
             const color = this.transformarNumeroAColor(this.secuencia[i]);
             
-            setTimeout(() => this.iluminarColor(color), 1000 * i) 
+      
+            
+            setTimeout(() => this.iluminarColor(color), 1200 * i) 
+            setTimeout(() => this.colorSonido(color), 1200 * i) 
           }
         }
 
-        iluminarColor(color) {
-          this.colores[color].classList.add('light')
-          setTimeout(() => this.apagarColor(color), 350)
+        colorSonido(color){
+          console.log(color)
+          switch (color){
+            case "celeste":
+              audioCeleste.play()
+              break;
+            case "naranja":
+              audioNaranja.play()
+              break;
+            case "verde":
+              audioVerde.play()
+            case "violeta":
+              audioVioleta.play()
+              break;
+          }
+
+          
         }
 
+        iluminarColor(color) {
+          
+          this.colores[color].classList.add('light')
+          setTimeout(() => this.apagarColor(color), 450)
+        }
+
+      
         apagarColor(color) {
+          
           this.colores[color].classList.remove('light')
         }
 
