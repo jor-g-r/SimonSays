@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Simon Dice</title>
+    <title>Simon Says</title>
     <link rel="stylesheet" type="text/css" href="estilos.css">
   </head>
   <body>
@@ -210,7 +210,7 @@
         }
 
         perdioElJuego() {
-          swal('Simón dice', 'Lo lamento, perdiste :(', 'error')
+          swal('Simón says', 'Im sorry, you loose :(', 'error')
             .then(() => {
               
               this.eliminarEventosClick()
@@ -219,7 +219,7 @@
         }
 
         ganoElJuego() {
-          swal('Simón dice', 'Felicidades, ganaste el juego', 'success')
+          swal('Simón says', 'Congrats, you won the game', 'success')
             .then(this.inicializar)
         }
 
