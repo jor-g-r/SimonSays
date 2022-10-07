@@ -4,15 +4,22 @@
 
 body {
     margin: 0;
-    background: #dedede;
+    
     display: flex;
     align-items: center;
     height: 100vh;
-  }
+    background-color:black;
+    background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;}
 
   .gameboard {
-    height: 100vh;
-    width: 100vh;
+    height: 727px;
+    width: 727px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
@@ -36,35 +43,35 @@ body {
   }
 
   .celeste {
-    background: #22a6b3;
+    background: #247ba0;
   }
 
   .celeste.light {
-    background: #7ed6df;
+    background: #9BF3F0;
   }
 
   .violeta {
-    background: #be2edd;
+    background: #87255b;
   }
 
   .violeta.light {
-    background: #e056fd;
+    background: #b370b0;
   }
 
   .naranja {
-    background: #f0932b;
+    background: #eb5e28;
   }
 
   .naranja.light {
-    background: #ffbe76;
+    background: #ffc145;
   }
 
   .verde {
-    background: #6ab04c;
+    background: #3E5622;
   }
 
   .verde.light {
-    background: #badc58;
+    background: #9BC53D;
   }
 
   .btn-start {
